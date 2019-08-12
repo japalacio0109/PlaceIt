@@ -1,0 +1,36 @@
+.movie {
+    max-width: 400px;
+    margin: 15px;
+}
+
+.addNew {
+    float: right;
+}
+.mat-form-field {
+    width: 300px;
+}
+
+#card-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+.mat-grid-tile {
+    width: 40em;
+    height: 40em;
+}
+.title {
+    margin-bottom: 5%;
+}
+.dialog {
+    width: 500px;
+    height: 500px;
+}
+.container {
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 3%;
+    // padding-bottom: 7%;
+    
+}

@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Crear Película</h1>
+<div mat-dialog-content class="mat-typography">
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <p>Cédula</p>
+    <mat-form-field>
+      <input type="number" maxlength="10" matInput formControlName="document" required>
+    </mat-form-field>
+    <p>Nombre Completo</p>
+    <mat-form-field>
+      <input type="text" matInput formControlName="full_name" required>
+    </mat-form-field>
+    <p>Email</p>
+    <mat-form-field>
+      <input type="email" matInput formControlName="email" required>
+    </mat-form-field>
+    <p>phone</p>
+    <mat-form-field>
+      <input type="number" maxlength="10" matInput formControlName="phone" required>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="isValid()" (click)="onSubmit()"
+    cdkFocusInitial>Guardar</button>
+</div>
+
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

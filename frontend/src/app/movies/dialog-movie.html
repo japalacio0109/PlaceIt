@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Crear Película</h1>
+<div mat-dialog-content class="mat-typography">
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <p>Nombre</p>
+    <mat-form-field>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+    <p>Descripción</p>
+    <mat-form-field>
+      <textarea matInput formControlName="description" required></textarea>
+    </mat-form-field>
+    <p>URL</p>
+    <mat-form-field>
+      <textarea matInput formControlName="image_url" required></textarea>
+    </mat-form-field>
+    <p>Fechas</p>
+    <mat-form-field class="example-full-width">
+      <input matInput readonly placeholder="seleccione una fecha" type="text" ngxDaterangepickerMd
+        (change)="selectDateInternal.next($event)" required />
+    </mat-form-field>
+      <p>Estado</p>
+    <mat-form-field>
+      <mat-select formControlName="status" required>
+        <mat-option>None</mat-option>
+        <mat-option value="1">Activo</mat-option>
+        <mat-option value="0">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="isValid()" (click)="onSubmit()"
+    cdkFocusInitial>Guardar</button>
+</div>
+
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

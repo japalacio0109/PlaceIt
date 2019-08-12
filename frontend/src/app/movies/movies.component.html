@@ -1,0 +1,62 @@
+<div class="container">
+  <mat-card class="title">
+      
+      <mat-card-title>Películas 
+        <button color="primary" mat-raised-button (click)="openDialog()" class="addNew"> Crear Nueva
+          Película</button>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span>
+            Buscar por fecha: <fa name="calendar"></fa> 
+          <mat-form-field class="example-full-width">
+            <input matInput readonly placeholder="seleccione una fecha" type="text" [ranges]="ranges"
+            [locale]="{'customRangeLabel' : 'Personalizado'}"
+              [showCustomRangeLabel]="true" ngxDaterangepickerMd
+              (change)="selectDate.next($event)" />
+          </mat-form-field>
+          
+
+        </span>
+      </mat-card-subtitle>
+
+  </mat-card>
+
+  <ng-container *ngIf="movies$ | async as movies">
+    <div id="card-container">
+      <mat-card class="movie" *ngFor="let item of movies">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{item.image_url}}" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            <b>Reseña: </b>{{item.description}}
+          </p>
+          <p>
+            <b>Desde: </b> {{item.init_date}} <b>Hasta: </b> {{item.end_date}}
+            <ng-container *ngIf="item.isVacancy === 1 && item.vacancy > 0">
+              <button (click)="openReservationDialog(item.id)" class="addNew" mat-raised-button color="primary">
+                <fa name="plus"></fa> Reservar
+              </button>
+            </ng-container>
+          </p>
+          <p *ngIf="item.isVacancy === 1" >
+            <b>Cupos Disponibles: </b>{{item.vacancy}}
+          </p>
+          <p *ngIf="item.isVacancy === 0">
+            <b>Fecha incompatible para reserva</b>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+  
+
+  
+
+</div>
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
